@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luis Gabriel Correia - Software Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes neonPulse {
+            0% { box-shadow: 0 0 5px #22c55e, 0 0 10px #22c55e, 0 0 20px #22c55e; }
+            50% { box-shadow: 0 0 10px #22c55e, 0 0 20px #22c55e, 0 0 30px #22c55e; }
+            100% { box-shadow: 0 0 5px #22c55e, 0 0 10px #22c55e, 0 0 20px #22c55e; }
+        }
+        @keyframes borderPulse {
+            0% { border-color: rgba(34, 197, 94, 0.5); }
+            50% { border-color: rgba(34, 197, 94, 1); }
+            100% { border-color: rgba(34, 197, 94, 0.5); }
+        }
+        .neon-box {
+            animation: neonPulse 2s infinite;
+            transition: all 0.3s ease;
+        }
+        .neon-box:hover {
+            transform: translateY(-5px);
+        }
+        .neon-border {
+            border: 2px solid rgba(34, 197, 94, 0.5);
+            animation: borderPulse 2s infinite;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        }
+        .tech-pill {
+            transition: all 0.3s ease;
+        }
+        .tech-pill:hover {
+            background: rgba(34, 197, 94, 0.2);
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+        .experience-card {
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+        }
+        .experience-card:hover {
+            background: rgba(0, 0, 0, 0.6);
+            transform: translateX(10px);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+        }
+        .modal.active {
+            display: flex;
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen flex items-center justify-center p-4 text-gray-100">
+    <div class="max-w-2xl w-full space-y-8 p-8 rounded-2xl bg-black/40 backdrop-blur-lg neon-border">
+        <div class="text-center">
+            <div class="relative w-32 h-32 mx-auto">
+                <img src="https://github.com/luisgabrieltech.png" alt="Profile" 
+                     class="w-32 h-32 rounded-full object-cover neon-border">
+            </div>
+            <h1 class="mt-6 text-3xl font-bold text-green-400">Luis Gabriel Correia</h1>
+            <p class="text-gray-400 mt-2">Software Developer</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+            <a href="https://github.com/luisgabrieltech" target="_blank" 
+               class="block w-full py-3 px-4 text-center bg-black/50 hover:bg-black/70 text-green-400 rounded-lg neon-box">
+                GitHub
+            </a>
+            <a href="https://linkedin.com/in/luisgabrieltech" target="_blank" 
+               class="block w-full py-3 px-4 text-center bg-black/50 hover:bg-black/70 text-green-400 rounded-lg neon-box">
+                LinkedIn
+            </a>
+            <a href="mailto:luisgabrieltech@gmail.com" 
+               class="block w-full py-3 px-4 text-center bg-black/50 hover:bg-black/70 text-green-400 rounded-lg neon-box">
+                Email
+            </a>
+            <a href="tel:+5581999437271" 
+               class="block w-full py-3 px-4 text-center bg-black/50 hover:bg-black/70 text-green-400 rounded-lg neon-box">
+                Phone
+            </a>
+        </div>
+
+        <div class="space-y-4">
+            <h2 class="text-2xl font-bold text-green-400 mb-4">Experience</h2>
+            
+            <div class="experience-card p-4 rounded-lg" onclick="openModal('riseup-modal')">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="text-green-400 font-semibold">RiseUp Project 2023.2</h3>
+                        <p class="text-gray-400">Mobile Development</p>
+                    </div>
+                    <span class="text-sm text-gray-500">Aug 2023 - Present</span>
+                </div>
+                <p class="mt-2 text-gray-300 text-sm">
+                    Kotlin mobile app development focusing on UX and technical innovation.
+                </p>
+            </div>
+
+            <div class="experience-card p-4 rounded-lg" onclick="openModal('kickoff-modal')">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="text-green-400 font-semibold">KickOff Project 2023.1</h3>
+                        <p class="text-gray-400">Application Prototyping</p>
+                    </div>
+                    <span class="text-sm text-gray-500">Feb 2023 - May 2023</span>
+                </div>
+                <p class="mt-2 text-gray-300 text-sm">
+                    Mental health platform development with focus on user experience.
+                </p>
+            </div>
+        </div>
+
+        <div class="pt-6">
+            <h2 class="text-2xl font-bold text-green-400 mb-4">Technologies</h2>
+            <div class="flex flex-wrap gap-3 justify-center">
+                <span class="tech-pill px-4 py-1.5 bg-black/50 text-green-400 rounded-full text-sm neon-border">HTML</span>
+                <span class="tech-pill px-4 py-1.5 bg-black/50 text-green-400 rounded-full text-sm neon-border">CSS</span>
+                <span class="tech-pill px-4 py-1.5 bg-black/50 text-green-400 rounded-full text-sm neon-border">JavaScript</span>
+                <span class="tech-pill px-4 py-1.5 bg-black/50 text-green-400 rounded-full text-sm neon-border">SQL</span>
+                <span class="tech-pill px-4 py-1.5 bg-black/50 text-green-400 rounded-full text-sm neon-border">MySQL</span>
+                <span class="tech-pill px-4 py-1.5 bg-black/50 text-green-400 rounded-full text-sm neon-border">Git</span>
+                <span class="tech-pill px-4 py-1.5 bg-black/50 text-green-400 rounded-full text-sm neon-border">Kotlin</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="riseup-modal" class="modal" onclick="closeModal('riseup-modal')">
+        <div class="m-auto max-w-lg w-full p-6 bg-black/90 rounded-xl neon-border" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-bold text-green-400">RiseUp Project 2023.2</h3>
+                <button onclick="closeModal('riseup-modal')" class="text-gray-400 hover:text-white">&times;</button>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <h4 class="text-green-400 font-semibold">Role</h4>
+                    <p class="text-gray-300">Mobile Software Developer</p>
+                </div>
+                <div>
+                    <h4 class="text-green-400 font-semibold">Duration</h4>
+                    <p class="text-gray-300">August 2023 - Present</p>
+                </div>
+                <div>
+                    <h4 class="text-green-400 font-semibold">Description</h4>
+                    <p class="text-gray-300">
+                        During the RiseUp Software Residency, we collaborated with iChords in developing a mobile application. The project focused on:
+                        <ul class="list-disc list-inside mt-2 space-y-2">
+                            <li>Mobile app development using Kotlin</li>
+                            <li>Implementation of modern UI/UX practices</li>
+                            <li>Technical innovation in the music education space</li>
+                            <li>Collaboration with a professional development team</li>
+                            <li>Agile methodology implementation</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="kickoff-modal" class="modal" onclick="closeModal('kickoff-modal')">
+        <div class="m-auto max-w-lg w-full p-6 bg-black/90 rounded-xl neon-border" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-bold text-green-400">KickOff Project 2023.1</h3>
+                <button onclick="closeModal('kickoff-modal')" class="text-gray-400 hover:text-white">&times;</button>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <h4 class="text-green-400 font-semibold">Role</h4>
+                    <p class="text-gray-300">Application Prototyping Developer</p>
+                </div>
+                <div>
+                    <h4 class="text-green-400 font-semibold">Duration</h4>
+                    <p class="text-gray-300">February 2023 - May 2023</p>
+                </div>
+                <div>
+                    <h4 class="text-green-400 font-semibold">Description</h4>
+                    <p class="text-gray-300">
+                        Through the Porto Digital Onboard program, we created Healthy, a premium platform focused on mental health. Key achievements include:
+                        <ul class="list-disc list-inside mt-2 space-y-2">
+                            <li>Development of an innovative mental health platform</li>
+                            <li>Implementation of user tracking and data analysis</li>
+                            <li>Creation of a real-time consultation system</li>
+                            <li>Focus on premium user experience and interface design</li>
+                            <li>Integration with mental health professionals</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
